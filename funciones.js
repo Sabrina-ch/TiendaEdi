@@ -1,7 +1,7 @@
 
 addEventListener("load",load);
 
-//var servidor = "http://localhost:666";
+/*var servidor = "http://localhost:666";*/
 var servidor= "https://tiendapiaedi.herokuapp.com/";
 
   /*function $valor(valor){
