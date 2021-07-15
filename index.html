@@ -33,20 +33,21 @@
     <form >
         
        <div class="container">
-         <h2>Usuario</h2> <input type="text"  id="usuario" name="usuario"  >
+         <input type="text"  id="usuario" name="usuario" placeholder="usuario" >
          <div id="usuarioVacio"></div>
 
-         <h2>Password</h2><input type="password" id="clave" name="clave" >
+         <input type="password" id="clave" name="clave" placeholder="clave">
+            <div id="claveVacia"></div>
+           
+           <input type="text" style="display: none" id="mail" name="mail" placeholder="mail" >
             <div id="claveVacia"></div>
 
-        <input type="button" id="btnInicio" onclick="validarVacio(),validarPassword(),inicioSesion()" value="Iniciar Sesion">
+        <input type="button"  id="btnInicio" onclick="validarVacio(),validarPassword(),inicioSesion()" value="Iniciar Sesion">
           <div id="errorPass"></div>
           
-          <h2>Mail</h2><input type="text" id="mail" name="mail" >
-            <div id="mailVacio"></div>
-
-          <input type="button" id="btnRegistro"  value="Registrate">
-          <div id="errorPass"></div>
+      <input type="button"  style="display:none" id="btnEnviar" onclick="enviarDatos()" value="Enviar">
+    
+        <input type="button" id="btnRegistar"  onclick="mostrarMail(),ocultar()" value="Registrarme">
 
       </form>
      </div>

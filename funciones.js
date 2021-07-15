@@ -1,8 +1,8 @@
 
 addEventListener("load",load);
 
-var servidor = "http://localhost:666";
-/*var servidor= "https://tiendapiaedi.herokuapp.com/";*/
+//var servidor = "http://localhost:666";
+var servidor= "https://tiendapiaedi.herokuapp.com/";
 
   /*function $valor(valor){
         return document.getElementById(valor);
@@ -41,6 +41,16 @@ function validarVacio(){
 
 }
 
+function mostrarMail(){
+   document.getElementById("mail").style.display = "block";
+   document.getElementById("btnEnviar").style.display = "block";
+
+}
+
+function ocultar(){
+    document.getElementById("btnInicio").style.display = "none";
+}
+
 function load(){
     
     enviarRespuesta(servidor,envioMensaje);
@@ -69,7 +79,7 @@ function enviarRespuesta(servidor,funcionArealizar){
     //creo el objeto
     var xmlhttp = new XMLHttpRequest();
      //indico hacia donde va el mensaje
-     xmlhttp.open("GET",servidor +"/hello/sabrina",true);
+     xmlhttp.open("GET",servidor +"/hello/yo",true);
     //seteo el evento
     xmlhttp.onreadystatechange=function(){
         //veo si llega la respuesta la servidor
@@ -102,7 +112,7 @@ function enviarRespuesta(servidor,funcionArealizar){
         if(xmlhttp.readyState== XMLHttpRequest.DONE){
             //reviso si la respuesta es correcta
             if(xmlhttp.status==200){
-                console.log(xmlhttp.response);
+               
                 alert(xmlhttp.responseText);
                 window.location.href="inicio.html";
             }
@@ -121,27 +131,36 @@ function enviarRespuesta(servidor,funcionArealizar){
     
 }
 
-//prueba por envio POST, funciona
-/*function enviarRespuesta(servidor,funcionArealizar){
-    
-    //creo el objeto
+function enviarDatos(){
     var xmlhttp = new XMLHttpRequest();
-     //indico hacia donde va el mensaje
-     xmlhttp.open("POST",servidor +"/hello",true);
-    //seteo el evento
-    xmlhttp.onreadystatechange=function(){
-        //veo si llega la respuesta la servidor
-        if(xmlhttp.readyState== XMLHttpRequest.DONE){
-            //reviso si la respuesta es correcta
-            if(xmlhttp.status==200){
-                funcionArealizar(xmlhttp.responseText);
-            }
-            else{
-                alert("ocurrio un error");
-            }
-        }
-    }
-    //envio respuesta
-    xmlhttp.send();
-}*/
+    
+    //indico hacia donde va el mensaje
+    xmlhttp.open("POST",servidor+'/usuario/registro',true);
+   //seteo el evento
+   xmlhttp.onreadystatechange=function(){
+       //veo si llega la respuesta la servidor
+       if(xmlhttp.readyState== XMLHttpRequest.DONE){ 
+           //reviso si la respuesta es correcta
+           if(xmlhttp.status==200){
+              
+               alert(xmlhttp.responseText);
+               
+           }
+           else{
+               alert("ocurrio un error");
+           }
+       }
+   }
+      
+   var datos = new FormData();
+   datos.append('usuario',document.getElementById("usuario").value);
+   datos.append('mail',document.getElementById("mail").value);
+   datos.append('clave',document.getElementById("clave").value);
+   
+   //envio respuesta
+   xmlhttp.send(datos);
+   
+}
+
+
 
