@@ -1,8 +1,9 @@
 
 addEventListener("load",load);
 
-/*var servidor = "http://localhost:666";*/
+//var servidor = "http://localhost:666";
 var servidor= "https://tiendapiaedi.herokuapp.com";
+
 
   /*function $valor(valor){
         return document.getElementById(valor);
@@ -67,6 +68,7 @@ function envioMensaje(){
 
   function  inicioSesion(){
       enviarPost();
+     /* enviarGet();*/
       
   }
 
@@ -105,7 +107,7 @@ function enviarRespuesta(servidor,funcionArealizar){
     var xmlhttp = new XMLHttpRequest();
     
      //indico hacia donde va el mensaje
-     xmlhttp.open("POST",servidor+'/usuario/login',true);
+     xmlhttp.open("post",servidor+'/usuario/login',true);
     //seteo el evento
     xmlhttp.onreadystatechange=function(){
         //veo si llega la respuesta la servidor
@@ -114,7 +116,7 @@ function enviarRespuesta(servidor,funcionArealizar){
             if(xmlhttp.status==200){
                
                 alert(xmlhttp.responseText);
-                window.location.href="inicio.html";
+                window.location.href="inicio.html"; 
             }
             else{
                 alert("ocurrio un error");
@@ -160,6 +162,11 @@ function enviarDatos(){
    //envio respuesta
    xmlhttp.send(datos);
    
+}
+
+function listaUusuarios(){
+
+    
 }
 
 
